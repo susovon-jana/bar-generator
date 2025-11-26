@@ -1,0 +1,336 @@
+/* ============================================================
+   GLOBAL THEME
+============================================================ */
+:root {
+  --accent: #0f6ef4;
+  --panel: #ffffff;
+  --muted: #6b7280;
+  --border: #e6e9ee;
+  --danger: #ef4444;
+  --success: #16a34a;
+  --radius: 10px;
+
+  font-family: Inter, system-ui, -apple-system, "Segoe UI";
+  color: #0b1720;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fa;
+  padding-top: 110px;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+.top-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 20px 18px;
+  background: linear-gradient(90deg, var(--accent), #0a66d8);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(9,30,66,0.12);
+  z-index: 1200;
+}
+
+.top-header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* ============================================================
+   PROFILE BOX (Blink + Hover Reactivity)
+============================================================ */
+.profile-box {
+  position: absolute;
+  right: 180px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255, 255, 255, 0.22);
+  padding: 14px 20px;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  animation: softBlink 2.8s ease-in-out infinite;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+@keyframes softBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0.65; }
+  100% { opacity: 1; }
+}
+
+.profile-box:hover {
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+  opacity: 1 !important;
+}
+
+.profile-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+  color: white;
+}
+
+.profile-link {
+  font-size: 0.82rem;
+  color: #eaffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   QR NAVIGATION BOX (Smaller, Non-blinking)
+============================================================ */
+.qr-nav-box {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255,255,255,0.15);
+  padding: 8px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  text-align: center;
+
+  width: 135px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.qr-nav-box:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+}
+
+.qr-nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: block;
+}
+
+/* ============================================================
+   PAGE LAYOUT
+============================================================ */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.builder {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 20px;
+}
+
+/* ============================================================
+   PANELS
+============================================================ */
+.panel {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid rgba(10,20,30,0.03);
+  box-shadow: 0 8px 22px rgba(13,26,40,0.06);
+}
+
+.card {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   INPUTS
+============================================================ */
+.input-group { margin-bottom: 12px; }
+label { font-weight: 700; display: block; margin-bottom: 6px; }
+
+input[type="text"],
+input[type="number"],
+input[type="color"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ============================================================
+   PREVIEW BOX
+============================================================ */
+.preview-wrap {
+  background: linear-gradient(#fff, #f8fafc);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#barcodePreview {
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn {
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.success { background: var(--success); color: #fff; }
+.btn.secondary { background: #6b7280; color: #fff; }
+.btn.danger { background: var(--danger); color: #fff; }
+
+.preview-controls,
+.utility-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#copyBtn { flex: 1; }
+
+/* ============================================================
+   ERROR
+============================================================ */
+.error {
+  margin-top: 8px;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile
+============================================================ */
+@media (max-width: 980px) {
+  .builder { grid-template-columns: 1fr; }
+  .input-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+
+  body { padding-top: 160px !important; }
+
+  /* ROW 1: TITLE FULL WIDTH */
+  .top-header-inner {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .header-title {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .header-title h1 {
+    font-size: 1.4rem !important;
+    line-height: 1.2;
+    margin: 0 0 16px 0;
+    font-weight: 800;
+  }
+
+  /* ------------------------------------------------
+     ROW 2: TWO SMALL BOXES SIDE BY SIDE
+  ------------------------------------------------ */
+  .mobile-box-row {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto 10px auto;
+    gap: 10px;
+  }
+
+  .profile-box,
+  .qr-nav-box {
+    flex: 1;
+    position: static !important;
+    transform: none !important;
+
+    padding: 8px 6px;      /* much smaller */
+    border-radius: 10px;
+    height: 100%;
+    text-align: center;
+
+    font-size: 0.70rem !important; /* small font */
+    line-height: 1.15;
+  }
+
+  /* profile text smaller */
+  .profile-name {
+    font-size: 0.80rem !important;
+    margin-bottom: 3px;
+  }
+
+  .profile-link {
+    font-size: 0.70rem !important;
+  }
+
+  .qr-nav-link {
+    font-size: 0.70rem !important;
+    line-height: 1.2;
+  }
+
+  /* turn off blinking on mobile */
+  .profile-box { animation: none !important; }
+
+  /* CONTENT BELOW */
+  .container {
+    padding-top: 10px;
+  }
+
+  /* BUTTONS BELOW PREVIEW = VERTICAL */
+  .preview-controls,
+  .utility-controls {
+    flex-direction: column;
+  }
+
+  .preview-controls button,
+  .utility-controls button {
+    width: 100%;
+  }
+}

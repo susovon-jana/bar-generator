@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barcode Generator</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="file/barcode.png">
+
+  <!-- JsBarcode Library -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style-barcode.css">
+</head>
+
+<body>
+
+<!-- ============================================================
+     TOP HEADER
+============================================================ -->
+<header class="top-header">
+  <div class="top-header-inner">
+
+    <div class="header-title" style="text-align:center; width:100%;">
+      <h1 style="font-weight:800; font-size:1.6rem; margin:0;">
+        Advanced Barcode Generator
+      </h1>
+    </div>
+
+    <!-- Right Profile Box -->
+
+    <div class="mobile-box-row">
+    <div class="profile-box">
+        <strong class="profile-name">Susovon Jana, Ph.D.</strong>
+        <a href="https://susovon.wixsite.com/susovon" target="_blank" class="profile-link">Visit Profile →</a>
+    </div>
+
+    <!-- QR GENERATOR BOX -->
+    <div class="qr-nav-box">
+        <a href="https://susovon-jana.github.io/qr-generator/" class="qr-nav-link">
+            Go to QR Code Generator
+        </a>
+    </div>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ============================================================
+     MAIN CONTENT
+============================================================ -->
+<main class="container">
+<section class="builder">
+
+  <!-- ============================================================
+       LEFT PANEL — INPUTS
+  ============================================================= -->
+  <form id="barcode-form" class="panel form-panel" autocomplete="off" novalidate>
+    <h2>Input & Options</h2>
+
+    <!-- Barcode value -->
+    <div class="input-group">
+      <label for="barcodeValue">Barcode Value</label>
+      <input type="text" id="barcodeValue" required placeholder="Enter value">
+    </div>
+
+    <!-- Barcode Type -->
+    <div class="input-group">
+      <label for="barcodeType">Barcode Type</label>
+      <select id="barcodeType">
+        <option value="code128" selected>Code 128 (Recommended)</option>
+        <option value="ean13">EAN-13</option>
+        <option value="ean8">EAN-8</option>
+        <option value="upc">UPC</option>
+        <option value="pharmacode">Pharma Code</option>
+      </select>
+    </div>
+
+    <!-- Appearance -->
+    <fieldset class="card">
+      <legend>Appearance</legend>
+
+      <div class="input-grid">
+
+        <div class="input-group">
+          <label for="barColor">Bar Color</label>
+          <input type="color" id="barColor" value="#000000">
+        </div>
+
+        <div class="input-group">
+          <label for="bgColor">Background Color</label>
+          <input type="color" id="bgColor" value="#ffffff">
+        </div>
+
+        <div class="input-group">
+          <label><input type="checkbox" id="includeBg" checked> Include Background</label>
+        </div>
+
+        <div class="input-group">
+          <label for="barWidth">Bar Width (px)</label>
+          <input type="number" id="barWidth" value="2" min="1">
+        </div>
+
+        <div class="input-group">
+          <label for="barHeight">Bar Height (px)</label>
+          <input type="number" id="barHeight" value="120" min="40">
+        </div>
+
+        <div class="input-group">
+          <label><input type="checkbox" id="showText" checked> Show Text</label>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <!-- Export -->
+    <fieldset class="card">
+      <legend>Export Options</legend>
+
+      <div class="input-grid">
+
+        <div class="input-group">
+          <label for="resolution">Resolution</label>
+          <select id="resolution">
+            <option value="2">Low</option>
+            <option value="3" selected>Medium</option>
+            <option value="4">High</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="format">Format</label>
+          <select id="format">
+            <option value="png">PNG</option>
+            <option value="svg">SVG</option>
+          </select>
+        </div>
+
+      </div>
+
+      <p id="error" class="error"></p>
+
+    </fieldset>
+
+  </form>
+
+  <!-- ============================================================
+       RIGHT PANEL — PREVIEW
+  ============================================================= -->
+  <aside class="panel preview-panel">
+    <h2>Live Preview</h2>
+
+    <div class="preview-wrap">
+      <svg id="barcodePreview"></svg>
+    </div>
+
+    <div class="preview-controls">
+      <button id="downloadBtn" class="btn success" disabled>Download</button>
+    </div>
+
+    <div class="utility-controls">
+      <button id="copyBtn" class="btn secondary" disabled>Copy Barcode</button>
+      <button id="resetBtn" class="btn danger">Reset</button>
+    </div>
+  </aside>
+
+</section>
+</main>
+
+
+<!-- ============================================================
+     SCRIPT
+============================================================ -->
+<script src="script-barcode.js"></script>
+
+</body>
+</html>
